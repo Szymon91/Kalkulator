@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator</title>
+    <link href="css/kalkulator.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section class="calculator">
+            <div id="calculator__wrapper">
+                <div id="previous__result"></div>
+                <div id="result"></div>
+                <div class="row">
+                    <div class="column">
+                        <button class="number" id="n7">7</button>
+                        <button class="number" id="n8">8</button>
+                        <button class="number" id="n9">9</button>                                               
+                        <button class="operator" id="reset">C</button>
+                        <button class="operator" id="backspace">CE</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button class="number" id="n4">4</button>
+                        <button class="number" id="n5">5</button>
+                        <button class="number" id="n6">6</button>
+                        <button class="operator" id="minus">-</button>
+                        <button class="operator" id="multiply">x</button>                     
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button class="number" id="n1">1</button>
+                        <button class="number" id="2">2</button>
+                        <button class="number" id="3">3</button>
+                        <button class="operator" id="+">+</button>
+                        <button class="operator" id="division">/</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button class="number" id="n0">0</button>
+                        <button id="point">.</button>
+                        <div class="empty">0</div>
+                        <button class="operator" id="answer">=</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="kalkulator.js"></script>
+</body>
+
+</html>
