@@ -12,7 +12,7 @@ let value = "0"; //wyświetlana zawartość
 let keepValue; //przechowywana zawartość poprzedniego przycisku;
 let arrayOfValues = []; //przechowywana tablica z pobranymi wartościami ze wszystkich przycisków
 
-let showResult = (num) => {
+const showResult = (num) => {
     let buttonText = num.target.innerText;
 
     if (value === "0")
@@ -22,52 +22,48 @@ let showResult = (num) => {
     result.innerText = value; //wyświetlany wynik     
 }
 
-const calculations = (num) => {
+const calculations = function (num) {
     let operator = num.target.innerText; //przechowujemy tekst z operatora
 
-    switch (operator) {
-        case '+':
-            keepValue = value; //wcześniejsza wartość = wyświetlana wartość
-            prevResult.innerText = value + operator;
-            value = ''; //po kliknięciu wartość znika i przechodzi do historii            
-            result.innerText = value; // aktualizujemy wyświetlaną wartość
-            arrayOfValues.push(keepValue); //dodajemy watość do tablicy
-            arrayOfValues.push('+'); //dodajemy operator do tablicy
-            break;
-        case '-':
-            keepValue = value;
-            prevResult.innerText = value + operator;
-            value = '';           
-            result.innerText = value;
-            arrayOfValues.push(keepValue);
-            arrayOfValues.push('-');
-            break;
-        case 'x':
-            keepValue = value;
-            prevResult.innerText = value + operator;
-            value = '';           
-            result.innerText = value;
-            arrayOfValues.push(keepValue);
-            arrayOfValues.push('*');
-            break;
-        case '/':
-            keepValue = value;
-            prevResult.innerText = value + operator;
-            value = '';          
-            result.innerText = value;
-            arrayOfValues.push(keepValue);
-            arrayOfValues.push('/');
-            break;
-        case '=':
-            arrayOfValues.push(keepValue);
-            let evaluation = eval(arrayOfValues.join(' ')); //obliczamy wynik z połączonej tablicy
-            value = evaluation + '';
-            result.innerText = value;
-            arrayOfValues = []; //po podaniu wyniku czyścimy tablicę
-            prevResult.innerText = '';
-            break;
-        default:
-            break;
+    if(operator == '+')  {
+        keepValue = value; //wcześniejsza wartość = wyświetlana wartość
+        prevResult.innerText += value + operator;
+        value = ''; //po kliknięciu wartość znika i przechodzi do historii            
+        result.innerText = value; // aktualizujemy wyświetlaną wartość
+        arrayOfValues.push(keepValue); //dodajemy watość do tablicy
+        arrayOfValues.push('+'); //dodajemy operator do tablicy
+        // if(arrayOfValues[arrayOfValues.length-1] == '-') {
+        //     // arrayOfValues[arrayOfValues.length-1] = "+";
+        //     arrayOfValues = [];            
+        // }
+    } else if (operator == '-') {
+        keepValue = value;
+        prevResult.innerText += value + operator;
+        value = '';
+        result.innerText = value;
+        arrayOfValues.push(keepValue);
+        arrayOfValues.push('-');
+    } else if (operator == 'x') {
+        keepValue = value;
+        prevResult.innerText = value + operator;
+        value = '';
+        result.innerText += value;
+        arrayOfValues.push(keepValue);
+        arrayOfValues.push('*');
+    } else if (operator == '/') {
+        keepValue += value;
+        prevResult.innerText = value + operator;
+        value = '';
+        result.innerText = value;
+        arrayOfValues.push(keepValue);
+        arrayOfValues.push('/');
+    } else if (operator == '=') {
+        arrayOfValues.push(value);
+        let evaluation = eval(arrayOfValues.join(' ')); //obliczamy wynik z połączonej tablicy
+        value = evaluation + '';
+        result.innerText = value;
+        arrayOfValues = []; //po podaniu wyniku czyścimy tablicę
+        prevResult.innerText = '';
     }
 }
 
@@ -99,5 +95,5 @@ buttonBackspace.addEventListener('click', () => {
 buttonPoint.addEventListener('click', () => {
     if (!value.includes('.')) //jeżeli przechowywana wartość nie zawiera kropki
         value += '.'; //dodaj kropkę
-        result.innerText = value; // wyświetlany wynik razem z kropką
+    result.innerText = value; // wyświetlany wynik razem z kropką
 });
